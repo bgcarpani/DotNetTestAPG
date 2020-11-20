@@ -1,0 +1,42 @@
+﻿@model IEnumerable<PermissionsWebApp.Models.Permission>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Permissions</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Employee
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PermissionType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PermissionDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployeeLastName), @Html.DisplayFor(modelItem => item.EmployeeFirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PermissionType.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PermissionDate)
+        </td>      
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }, new {@class="btn btn-warning"}) 
+            @Html.ActionLink("Details", "Details", new { id=item.Id }, new {@class="btn btn-info"}) 
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id }, new {@class="btn btn-danger"})
+        </td>
+    </tr>
+}
+
+</table>
